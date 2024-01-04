@@ -4,16 +4,24 @@ namespace SpriteKind {
 }
 sprites.onOverlap(SpriteKind.Projectile2, SpriteKind.Player, function (sprite, otherSprite) {
     falling = sprites.create(img`
-        . . 2 2 2 2 . . 
-        . 2 2 2 2 2 2 . 
-        2 2 2 2 2 2 2 2 
-        2 2 2 2 2 2 2 2 
-        2 2 2 2 2 2 2 2 
-        2 2 2 2 2 2 2 2 
-        . 2 2 2 2 2 2 . 
-        . . 2 2 2 2 . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 6 6 6 6 . . . . . . 
+        . . . . 6 6 6 5 5 6 6 6 . . . . 
+        . . . 7 7 7 7 6 6 6 6 6 6 . . . 
+        . . 6 7 7 7 7 8 8 8 1 1 6 6 . . 
+        . . 7 7 7 7 7 8 8 8 1 1 5 6 . . 
+        . 6 7 7 7 7 8 8 8 8 8 5 5 6 6 . 
+        . 6 7 7 7 8 8 8 6 6 6 6 5 6 6 . 
+        . 6 6 7 7 8 8 6 6 6 6 6 6 6 6 . 
+        . 6 8 7 7 8 8 6 6 6 6 6 6 6 6 . 
+        . . 6 8 7 7 8 6 6 6 6 6 8 6 . . 
+        . . 6 8 8 7 8 8 6 6 6 8 6 6 . . 
+        . . . 6 8 8 8 8 8 8 8 8 6 . . . 
+        . . . . 6 6 8 8 8 8 6 6 . . . . 
+        . . . . . . 6 6 6 6 . . . . . . 
+        . . . . . . . . . . . . . . . . 
         `, SpriteKind.Projectile)
-    falling.setBounceOnWall(true)
+    falling.setBounceOnWall(false)
     falling.setPosition(sprite.x, sprite.y - 5)
     falling.setVelocity(sprite.vx, 0 - sprite.vy)
     falling.ay = sprite.ay
@@ -52,9 +60,9 @@ let BARQUE = sprites.create(img`
     . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
     . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
     . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
-    . . f f 1 1 1 1 1 1 1 1 f . . . 
+    . . f 1 1 1 1 1 1 1 1 1 f . . . 
     . . 1 f 1 1 1 1 1 1 1 f 1 . . . 
-    . . 1 f f f f f f f f 1 1 . . . 
+    . . 1 1 f f f f f f f 1 1 . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 BARQUE.setPosition(80, 100)
@@ -98,30 +106,22 @@ game.onUpdateInterval(2000, function () {
             `, SpriteKind.Projectile)
     } else {
         falling = sprites.create(img`
-            ........................
-            ........................
-            ........................
-            ........................
-            ..........ffff..........
-            ........ff1111ff........
-            .......fb111111bf.......
-            .......f11111111f.......
-            ......fd11111111df......
-            ......fd11111111df......
-            ......fddd1111dddf......
-            ......fbdbfddfbdbf......
-            ......fcdcf11fcdcf......
-            .......fb111111bf.......
-            ......fffcdb1bdffff.....
-            ....fc111cbfbfc111cf....
-            ....f1b1b1ffff1b1b1f....
-            ....fbfbffffffbfbfbf....
-            .........ffffff.........
-            ...........fff..........
-            ........................
-            ........................
-            ........................
-            ........................
+            . . f f f . . . . . . . . f f f 
+            . f f c c . . . . . . f c b b c 
+            f f c c . . . . . . f c b b c . 
+            f c f c . . . . . . f b c c c . 
+            f f f c c . c c . f c b b c c . 
+            f f c 3 c c 3 c c f b c b b c . 
+            f f b 3 b c 3 b c f b c c b c . 
+            . c 1 b b b 1 b c b b c c c . . 
+            . c 1 b b b 1 b b c c c c . . . 
+            c b b b b b b b b b c c . . . . 
+            c b 1 f f 1 c b b b b f . . . . 
+            f f 1 f f 1 f b b b b f c . . . 
+            f f 2 2 2 2 f b b b b f c c . . 
+            . f 2 2 2 2 b b b b c f . . . . 
+            . . f b b b b b b c f . . . . . 
+            . . . f f f f f f f . . . . . . 
             `, SpriteKind.Projectile2)
     }
     falling.setPosition(randint(20, 140), 20)
